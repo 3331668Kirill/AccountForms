@@ -1,0 +1,56 @@
+.grid {
+
+/*/ This is our CSS grid parent container /*/
+display: grid;
+margin: 20px;
+/*/ 5 cols (each 100px in width) /*/
+    grid-template-columns: [left] 300px  [center]60px  100px 100px  100px 100px 100px 100px [right];
+    grid-template-rows: [top] 100px  [center] 100px 100px 100px 50px 50px 50px  [bottom]
+}
+
+.cell_1 {
+    font-size: 20px;
+    margin: 20px;
+    grid-column: left / center;
+    grid-row: top / center;
+}
+
+
+/*center / right;top / center;*/
+.cell_2 {
+
+    margin-left: 20px;
+    grid-column: left / center;
+    grid-row: center / bottom
+}
+
+.cell_3 {
+    font-size: 20px;
+    margin: 20px;
+    grid-column: center / right;
+    grid-row: top / center;
+}
+.table{
+    border-left: solid black;
+    border-top: solid black;
+    border-bottom: solid black;
+}
+.table_2{
+    justify-items: center;
+    text-align: center;
+    border-left: solid black;
+    border-top: solid black;
+    border-bottom: solid black;
+}
+.table_3{
+    border: solid black;
+    text-align: center
+}
+/*.cell_4 {*/
+/*    !*grid-column: center / right;*!*/
+/*    !*grid-row: center / bottom;*!*/
+/*}*/
+/*.cell_5 {*/
+/*    !*grid-column: left / center;*!*/
+/*    !*grid-row: center / bottom;*!*/
+/*}*/
