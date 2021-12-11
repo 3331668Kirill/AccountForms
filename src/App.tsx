@@ -1,7 +1,7 @@
 import React from 'react';
 import {Example} from './Example'
 import './App.css';
-import {ComponentToPrint} from "./Print";
+
 
 function App() {
   return (

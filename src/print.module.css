@@ -46,6 +46,11 @@ margin: 20px;
     border: solid black;
     text-align: center
 }
+.table_4{
+    border-left: solid black;
+    border-bottom: solid black;
+    text-align: center;
+}
 /*.cell_4 {*/
 /*    !*grid-column: center / right;*!*/
 /*    !*grid-row: center / bottom;*!*/
