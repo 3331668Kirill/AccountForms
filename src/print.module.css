@@ -3,6 +3,7 @@
 /*/ This is our CSS grid parent container /*/
 display: grid;
 margin: 20px;
+
 /*/ 5 cols (each 100px in width) /*/
     grid-template-columns: [left] 300px  [center]60px  100px 100px  100px 100px 100px 100px [right];
     grid-template-rows: [top] 100px  [center] 100px 100px 100px 50px 50px 50px  [bottom]
@@ -48,8 +49,12 @@ margin: 20px;
 }
 .table_4{
     border-left: solid black;
+
     border-bottom: solid black;
     text-align: center;
+}
+.table_5{
+    border-left: solid black;
 }
 /*.cell_4 {*/
 /*    !*grid-column: center / right;*!*/
