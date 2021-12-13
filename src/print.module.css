@@ -6,7 +6,7 @@ margin: 20px;
 
 /*/ 5 cols (each 100px in width) /*/
     grid-template-columns: [left] 300px  [center]60px  100px 100px  100px 100px 100px 100px [right];
-    grid-template-rows: [top] 100px  [center] 100px 100px 100px 50px 50px 50px  [bottom]
+    grid-template-rows: [top] 100px 100px [center] 100px 100px 100px 50px 50px 50px  [bottom]
 }
 
 .cell_1 {
@@ -28,6 +28,16 @@ margin: 20px;
 .cell_3 {
     font-size: 20px;
     margin: 20px;
+    grid-column: center / right;
+    grid-row: top / center;
+}
+.cell_4 {
+    height: 100px;
+    margin-top: 50px;
+}
+.cell_5 {
+    font-size: 20px;
+    margin: 50px;
     grid-column: center / right;
     grid-row: top / center;
 }
@@ -56,6 +66,7 @@ margin: 20px;
 .table_5{
     border-left: solid black;
 }
+
 /*.cell_4 {*/
 /*    !*grid-column: center / right;*!*/
 /*    !*grid-row: center / bottom;*!*/

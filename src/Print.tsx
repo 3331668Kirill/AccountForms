@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useMemo, useState} from "react";
+import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import css from './print.module.css'
 
 
@@ -9,62 +9,83 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     const [nameFirm, setNameFirm] = useState<string>('')
     const [editMode, setEditMode] = useState<boolean>(false)
     const [raw, setRaw] = useState<Array<string|number|null>>(initialRaw)
+    const [endRaw, setEndRaw] = useState<Array<string|number|null>>([])
+    const [total, setTotal] = useState<number>(0)
     const [service, setService] = useState<string>('')
     const [unit, setUnit] = useState<string>('')
-    const [quantity, setQuantity] = useState<number>(0)
-    const [price, setPrice] = useState<number>(0)
+    const [quantity, setQuantity] = useState<string>('')
+    const [price, setPrice] = useState<string>('')
     const [vat, setVat] = useState<number>(20)
 
     const changeInputElement =  (e: ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.id)
-        switch (e.target.id) {
+        console.log(e.currentTarget.id)
+        switch (e.currentTarget.id) {
             case 'price':
-                return setPrice(+e.target.value)
+
+                return setPrice(e.currentTarget.value)
             case 'quantity':
-                return setQuantity(+e.target.value)
+
+                return setQuantity(e.currentTarget.value)
             case 'unit':
-                return setUnit(e.target.value)
+                return setUnit(e.currentTarget.value)
             case 'service':
-                return setService(e.target.value)
+                return setService(e.currentTarget.value)
             case 'nameFirm':
                 setEditMode(true)
-                return setNameFirm(e.target.value)
+                return setNameFirm(e.currentTarget.value)
             case 'unp':
                 setEditMode(true)
-                return setUnp(e.target.value)
+                return setUnp(e.currentTarget.value)
             case 'vat':
-                return setVat(+e.target.value)
+                return setVat(+e.currentTarget.value)
             default:
                 return null
         }
     }
 
+    let cost = +(+quantity * +price).toFixed(2)
+    let costVat = +(cost * vat/100).toFixed(2)
+
+    useEffect(()=>{
+        setEndRaw(['','','','','','Итого:',total ,null])
+
+    },[total])
+
+
     const ok = useMemo(() => () => {
-        let cost = +(quantity * price).toFixed(2)
-        let costVat = +(cost * vat/100).toFixed(2)
-            setRaw([...raw,service,unit,quantity,price,cost,vat,+costVat+ +cost,null])
+
+        let copyRaw = [...raw]
+            setRaw([...copyRaw,service,unit,quantity,price,cost,vat,+costVat+ +cost,null])
+            setTotal(t=>t+ +costVat+ +cost)
+
             setEditMode(false)
             setUnit('')
-            setPrice(0)
-            setQuantity(0)
+            setPrice('')
+            setQuantity('')
             setService('')
 
-        }, [raw,quantity, service, unit, price,vat]
+        }, [raw,quantity, service, unit, price,vat, cost,costVat]
     )
+
     const deleteRaw = () => {
-        //[...raw].splice()
-        setRaw([...raw].filter((t,i)=> i < raw.length-8))
-    }
+        if (raw.length >= 8) {
+            setRaw([...raw].filter((t, i) => i < raw.length - 8))
+            let array = raw.filter((t, i) => i >= raw.length - 8)
+            // @ts-ignore
+            setTotal(t => t - array[6])
+        }
+  }
 
         let arrDiv = []
         for (let i=0; i<=6;i++) {
             arrDiv[i] = <div className={css.cell}> </div>
     }
-    //margin: 200mm !important
-    console.log(raw, unp, price)
+
+
     return (<div>
             <style type="text/css"
-                   media="print">{'@media print { body { -webkit-print-color-adjust: exact; } @page { size: A4}}'}</style>
+                   media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
+            '@page { size: A4; margin-left: 15mm !important }}'}</style>
             <label>введите УНП: </label>
             <input type={"text"} id={'unp'} onChange={changeInputElement} maxLength={9}/>
 
@@ -89,9 +110,11 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
             <button onClick={deleteRaw}> Удалить строку </button>
 
 
+
             <div ref={ref} className={css.grid}>
                 <div className={css.cell_1}>АКТ выполненных работ</div>
-                <div className={css.cell_3}>№123 от 11 декабря 2021 года</div>
+                <div className={css.cell_3}>№123 от 11 декабря 2021 года </div>
+                <div className={css.cell_5}>г.Минск</div>
                 <div className={css.cell}> Заказчик: {!editMode && unp} {!editMode && nameFirm} </div>
                 { arrDiv.map(t=>t)}
                 <div className={css.cell}> Исполнитель: OOO "Kopyta"</div>
@@ -111,7 +134,17 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                       )
                  })
                 }
-                {/*{raw.length === 7 && <div className={css.table_5}>333 </div>}*/}
+                {endRaw.map((t,index) => {
+                    return (
+                        <div key={index} className={t!==null ? css.table_4 : css.table_5}> {t} </div>
+
+                    )
+                })
+                }
+                <div className={css.cell_4}>Заказчик ________________</div>
+                <div> </div>
+                    <div className={css.cell_4}> Исполнитель_______________ </div>
+
             </div>
 
 
