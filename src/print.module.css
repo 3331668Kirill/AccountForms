@@ -66,7 +66,9 @@ margin: 20px;
 .table_5{
     border-left: solid black;
 }
-
+.service{
+    border-color: red;
+}
 /*.cell_4 {*/
 /*    !*grid-column: center / right;*!*/
 /*    !*grid-row: center / bottom;*!*/
