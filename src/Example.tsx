@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-
 import { ComponentToPrint } from './Print';
 
 export const Example = () => {
@@ -12,7 +11,7 @@ export const Example = () => {
     return (
         <div>
             <ComponentToPrint ref={componentRef} />
-            <button onClick={handlePrint}>Print this out!</button>
+            <button onClick={handlePrint}>Распечатать или сохранить в файл</button>
         </div>
     );
 };

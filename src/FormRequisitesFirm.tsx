@@ -28,7 +28,7 @@ export const FormRequisitesFirm = React.memo(({
     return (<div>
         <button style={{margin: "10px 20px", padding: "20px", fontSize: "1rem"}}
                 onClick={() => setModalActive(true)}
-        > РЕКВИЗИТЫ ФИРМЫ
+        > РЕКВИЗИТЫ ЗАКАЗЧИКА
         </button>
         <Modal active={modalActive} setActive={setModalActive}>
             <label>введите УНП: </label>
@@ -40,7 +40,7 @@ export const FormRequisitesFirm = React.memo(({
             <div>
                 <label>введите адрес организации: </label>
                 <input type={"text"} id={'address'} style={{width: '250px'}}
-                       value={address} onChange={changeAddress} maxLength={28}/>
+                       value={address} onChange={changeAddress} maxLength={40}/>
             </div>
             <div>
                 <label>введите расчетный счет организации: </label>
