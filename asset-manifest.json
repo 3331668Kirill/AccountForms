@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/AccountForms/static/css/main.1bc12788.chunk.css",
+    "main.js": "/AccountForms/static/js/main.ffda7c31.chunk.js",
+    "main.js.map": "/AccountForms/static/js/main.ffda7c31.chunk.js.map",
+    "runtime-main.js": "/AccountForms/static/js/runtime-main.42ce4534.js",
+    "runtime-main.js.map": "/AccountForms/static/js/runtime-main.42ce4534.js.map",
+    "static/js/2.a0aaaca2.chunk.js": "/AccountForms/static/js/2.a0aaaca2.chunk.js",
+    "static/js/2.a0aaaca2.chunk.js.map": "/AccountForms/static/js/2.a0aaaca2.chunk.js.map",
+    "static/js/3.5302c058.chunk.js": "/AccountForms/static/js/3.5302c058.chunk.js",
+    "static/js/3.5302c058.chunk.js.map": "/AccountForms/static/js/3.5302c058.chunk.js.map",
+    "index.html": "/AccountForms/index.html",
+    "static/css/main.1bc12788.chunk.css.map": "/AccountForms/static/css/main.1bc12788.chunk.css.map",
+    "static/js/2.a0aaaca2.chunk.js.LICENSE.txt": "/AccountForms/static/js/2.a0aaaca2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.42ce4534.js",
+    "static/js/2.a0aaaca2.chunk.js",
+    "static/css/main.1bc12788.chunk.css",
+    "static/js/main.ffda7c31.chunk.js"
+  ]
+}
