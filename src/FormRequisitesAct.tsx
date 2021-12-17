@@ -9,7 +9,6 @@ interface TypePropsFormRequisitesAct {
     unit: string | number
     price: string | number
     vat: string | number
-    active: boolean
     changeDocNumber: (e: ChangeEvent<HTMLInputElement>) => void
     changeDocDate: (e: ChangeEvent<HTMLInputElement>) => void
     changeUnit: (e: ChangeEvent<HTMLInputElement>) => void
@@ -17,18 +16,18 @@ interface TypePropsFormRequisitesAct {
     changeQuantity: (e: ChangeEvent<HTMLInputElement>) => void
     changePrice: (e: ChangeEvent<HTMLInputElement>) => void
     changeVat: (e: ChangeEvent<HTMLInputElement>) => void
-    ok: () => void
+    clearButton: () => void
 }
 
-export const FormRequisitesAct = ({
+export const FormRequisitesAct = React.memo(({
                                       docNumber, changeDocNumber, service, vat, changeVat, docDate,
-                                      changeQuantity, quantity, changePrice, price, ok, active,
-                                      changeService, unit, changeUnit, changeDocDate,
+                                      changeQuantity, quantity, changePrice, price,
+                                      changeService, unit, changeUnit, changeDocDate,clearButton,
                                   }: TypePropsFormRequisitesAct) => {
 
-
+    console.log("render Act")
     return (<div>
-            {active && <div>
+            <div>
                 <div>
                     <label>введите дату документа: </label>
                     <input type={"date"} id={'docDate'}
@@ -54,23 +53,24 @@ export const FormRequisitesAct = ({
                 </div>
                 <div>
                     <label>введите кол-во: </label>
-                    <input type={"text"} id={'quantity'} className={service === '' ? css.service : ''}
+                    <input type={"text"} id={'quantity'} className={quantity === '' ? css.service : ''}
                            value={quantity} onChange={changeQuantity}/>
                 </div>
                 <div>
                     <label>введите цену: </label>
-                    <input type={"text"} id={'price'} className={service === '' ? css.service : ''}
+                    <input type={"text"} id={'price'} className={price === '' ? css.service : ''}
                            value={price} onChange={changePrice}/>
                 </div>
                 <div>
                     <label>введите НДС %: </label>
                     <input type={"text"} id={'vat'} value={vat} onChange={changeVat}/>
                 </div>
-                <button onClick={ok}> Добавить в таблицу </button>
+
+                <button onClick={clearButton}> Очистить поля ввода </button>
 
             </div>
-            }
+
         </div>
 
     )
-}
+})

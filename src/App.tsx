@@ -1,5 +1,5 @@
 import React from 'react';
-import {Example} from './Example'
+import {ActForm} from './ActForm'
 import './App.css';
 
 
@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
 
-       <Example />
+       <ActForm/>
 
 
     </div>

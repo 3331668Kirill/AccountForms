@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
 import { ComponentToPrint } from './Print';
 
-export const Example = () => {
+export const ActForm = () => {
     const componentRef = useRef(null);
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -11,7 +11,7 @@ export const Example = () => {
     return (
         <div>
             <ComponentToPrint ref={componentRef} />
-            <button onClick={handlePrint}>Распечатать или сохранить в файл</button>
+            <button style={{width:'150px', height: '125px', backgroundColor:'yellow'}} onClick={handlePrint}>Распечатать или сохранить в файл</button>
         </div>
     );
 };

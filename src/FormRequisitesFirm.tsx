@@ -7,9 +7,9 @@ interface TypePropsFormRequisitesFirm {
     changeNameFirm: (e: ChangeEvent<HTMLInputElement>) => void
     changeAddress: (e: ChangeEvent<HTMLInputElement>) => void
     changeBankAccount: (e: ChangeEvent<HTMLInputElement>) => void
-    bankAccount: string|number
-    nameFirm: string|number
-    address: string|number
+    bankAccount: string
+    nameFirm: string
+    address: string
 }
 
 export const FormRequisitesFirm = React.memo(({
@@ -26,7 +26,7 @@ export const FormRequisitesFirm = React.memo(({
     const [modalActive, setModalActive] = useState<boolean>(false)
     console.log("render Form")
     return (<div>
-        <button style={{margin: "10px 20px", padding: "20px", fontSize: "1rem"}}
+        <button style={{margin: "10px 20px", padding: "20px", fontSize: "1rem", backgroundColor:'lightgreen'}}
                 onClick={() => setModalActive(true)}
         > РЕКВИЗИТЫ ЗАКАЗЧИКА
         </button>

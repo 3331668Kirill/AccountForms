@@ -6,7 +6,7 @@ margin: 20px;
 
 /*/ 5 cols (each 100px in width) /*/
     grid-template-columns: [left] 300px  [center]60px  100px 100px  100px 100px 120px 100px [right];
-    grid-template-rows: [top] 100px 100px [center] 130px 130px 100px 50px 50px 50px 50px 50px[bottom]
+    grid-template-rows: [top] 100px 100px [center] 100px 130px 100px 50px 50px 50px 50px 50px[bottom]
 }
 
 .cell_1 {

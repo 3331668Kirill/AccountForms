@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useMemo, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import css from './print.module.css'
 import {FormRequisitesFirm} from "./FormRequisitesFirm";
 import {useInput, useInputNum} from "./utils/useInput";
@@ -6,7 +6,6 @@ import {FormRequisitesAct} from "./FormRequisitesAct";
 
 export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     let initialRaw: Array<string | number | null> = []
-    const [active, setActive] = useState<boolean>(false)
     const [raw, setRaw] = useState<Array<string | number | null>>(initialRaw)
     const [endRaw, setEndRaw] = useState<Array<string | number | null>>([])
     const [total, setTotal] = useState<number>(0)
@@ -15,12 +14,16 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     const docDate = useInput('')
     const service = useInput('')
     const unit = useInput('')
-    const nameFirm = useInput('')
-    const address = useInput('')
-    const bankAccount = useInput('')
+    // @ts-ignore
+    const nameFirm = useInput(localStorage.getItem('nameFirm'))
+    // @ts-ignore
+    const address = useInput(localStorage.getItem('address'))
+    // @ts-ignore
+    const bankAccount = useInput(localStorage.getItem('bankAccount'))
     const price = useInputNum('')
     const quantity = useInputNum('')
-    const unp = useInputNum('')
+    // @ts-ignore
+    const unp = useInputNum(localStorage.getItem('unp'))
     const vat = useInputNum('20')
 
     let cost = +(+quantity.value * +price.value).toFixed(2)
@@ -30,24 +33,24 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
         setEndRaw(['', '', '', '', '', 'Итого:', total < 0 ? 0 : +total.toFixed(2), null])
     }, [raw, total])
 
-    const ok = useMemo(() => () => {
-        setError(true)
+    const addStrInTable = () => {
+            setError(true)
             if (service.value !== '' && price.value !== '' && quantity.value !== '') {
                 let copyRaw = [...raw]
                 setRaw([...copyRaw, service.value, unit.value,
                     quantity.value, price.value, cost, vat.value, +(+costVat + +cost).toFixed(2), null])
                 setTotal(t => +t.toFixed(2) + +costVat.toFixed(2) + +cost.toFixed(2))
-                unit.reset('')
-                price.reset('')
-                quantity.reset('')
-                service.reset('')
                 setError(false)
             }
+      }
 
-            setActive(false)
-
-        }, [raw, quantity, service, unit, price, vat, cost, costVat]
-    )
+    const clearButton = useCallback(() => {
+        unit.reset('')
+        price.reset('')
+        quantity.reset('')
+        service.reset('')
+        setError(false)
+    },[unit.value,price.value,quantity.value,service.value])
 
     const deleteRaw = () => {
         if (raw.length >= 8) {
@@ -56,9 +59,6 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
             // @ts-ignore
             setTotal(t => +t.toFixed(2) - array[6])
         }
-    }
-    const fillFormAct = () => {
-        setActive(true)
     }
 
     let arrDiv = []
@@ -84,15 +84,14 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                                 unp={unp.value}
             />
             <FormRequisitesAct docNumber={docNumber.value}
-                               active={active}
-                               changeDocNumber={docNumber.onChange}
-                               changeService={service.onChange}
-                               changeUnit={unit.onChange}
-                               changeQuantity={quantity.onChange}
-                               changePrice={price.onChange}
-                               changeVat={vat.onChange}
-                               changeDocDate={docDate.onChange}
-                               ok={ok}
+                               changeDocNumber={useCallback((e)=>docNumber.onChange(e),[docNumber.value])}
+                               changeService={useCallback((e)=>service.onChange(e),[service.value])}
+                               changeUnit={useCallback((e)=>unit.onChange(e),[unit.value])}
+                               changeQuantity={useCallback((e)=>quantity.onChange(e),[quantity.value])}
+                               changePrice={useCallback((e)=>price.onChange(e),[price.value])}
+                               changeVat={useCallback((e)=>vat.onChange(e),[vat.value])}
+                               changeDocDate={useCallback((e)=>docDate.onChange(e),[docDate.value])}
+                               clearButton={clearButton}
                                service={service.value}
                                docDate={docDate.value}
                                vat={vat.value}
@@ -101,23 +100,22 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                                unit={unit.value}
 
             />
-            {!active && <div>
-                <button onClick={fillFormAct} style={{margin: "10px 20px", padding: "20px", fontSize: "1rem"}}> АКТ
-                </button>
+            {<div>
+                <button onClick={addStrInTable}> Добавить в таблицу</button>
                 <button onClick={deleteRaw}> Удалить строку</button>
             </div>}
-            { error && <h3 style={{color:'red'}}>"Поля выделенные красным обязательны для заполнения!!!"</h3>}
+            {error && <p style={{color: 'red'}}>"Поля выделенные красным обязательны для заполнения!!!"</p>}
             <div ref={ref} className={css.grid}>
                 <div className={css.cell_1}>АКТ выполненных работ</div>
-                {!active &&<div className={css.cell_3}>№{docNumber.value} от {docDate.value && dateStr}</div>}
+                <div className={css.cell_3}>№{docNumber.value} от {docDate.value && dateStr}</div>
                 <div className={css.cell_5}>г.Минск</div>
                 <div
-                    className={css.customer}> Заказчик: <span>{!active && nameFirm.value}
-                    <div>юр. адрес: {!active && address.value}</div>
-                    <div>УНП: {!active && unp.value}</div>
+                    className={css.customer}> Заказчик: <span>{nameFirm.value}
+                    <div>юр. адрес: {address.value}</div>
+                    <div>УНП: {unp.value}</div>
 
-                    <div> р/с: {!active && bankAccount.value}</div>
-                    </span> </div>
+                    <div> р/с: {bankAccount.value}</div>
+                    </span></div>
                 {arrDiv.map(t => t)}
                 <div className={css.cell}> Исполнитель: OOO "Kopyta"</div>
                 {arrDiv.map(t => t)}
