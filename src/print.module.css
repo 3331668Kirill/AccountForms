@@ -1,22 +1,25 @@
 .grid {
 
-/*/ This is our CSS grid parent container /*/
-display: grid;
-margin: 20px;
+    /*/ This is our CSS grid parent container /*/
+    display: grid;
+    margin: 20px;
 
-/*/ 5 cols (each 100px in width) /*/
+
+    /*/ 5 cols (each 100px in width) /*/
     grid-template-columns: [left] 300px  [center]60px  100px 100px  100px 100px 120px 100px [right];
     grid-template-rows: [top] 100px 100px [center] 100px 130px 100px 50px 50px 50px 50px 50px[bottom]
 }
 
 .cell_1 {
-    font-size: 20px;
+    font-size: 22px;
     margin: 20px;
     grid-column: left / center;
     grid-row: top / center;
 }
-.customer{
-    grid-area: 2 / 1 / 4 / 1 ;
+
+.customer {
+    grid-area: 2 / 1 / 4 / 1;
+    width: 100vmax;
 }
 
 
@@ -34,44 +37,63 @@ margin: 20px;
     grid-column: center / right;
     grid-row: top / center;
 }
+
 .cell_4 {
+    height: 100px;
+    /*margin-top: 50px;*/
+}
+.cell_6 {
     height: 100px;
     margin-top: 50px;
 }
+
+.total_of_string{
+    margin-bottom: 30px;
+    width: 100vmax;
+    font-weight: bold;
+}
+
 .cell_5 {
     font-size: 20px;
     margin: 50px;
     grid-column: center / right;
     grid-row: top / center;
 }
-.table{
+
+.table {
     border-left: solid black;
     border-top: solid black;
     border-bottom: solid black;
 }
-.table_2{
+
+.table_2 {
     justify-items: center;
     text-align: center;
     border-left: solid black;
     border-top: solid black;
     border-bottom: solid black;
 }
-.table_3{
+
+.table_3 {
     border: solid black;
     text-align: center
 }
-.table_4{
+
+.table_4 {
     border-left: solid black;
 
     border-bottom: solid black;
     text-align: center;
 }
-.table_5{
+
+.table_5 {
     border-left: solid black;
 }
-.service{
+
+.service {
     border-color: red;
 }
+
 /*.cell_4 {*/
 /*    !*grid-column: center / right;*!*/
 /*    !*grid-row: center / bottom;*!*/

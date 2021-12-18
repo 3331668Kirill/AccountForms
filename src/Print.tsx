@@ -3,6 +3,7 @@ import css from './print.module.css'
 import {FormRequisitesFirm} from "./FormRequisitesFirm";
 import {useInput, useInputNum} from "./utils/useInput";
 import {FormRequisitesAct} from "./FormRequisitesAct";
+import {numOfString} from "./utils/numOfStr";
 
 export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     let initialRaw: Array<string | number | null> = []
@@ -34,15 +35,15 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     }, [raw, total])
 
     const addStrInTable = () => {
-            setError(true)
-            if (service.value !== '' && price.value !== '' && quantity.value !== '') {
-                let copyRaw = [...raw]
-                setRaw([...copyRaw, service.value, unit.value,
-                    quantity.value, price.value, cost, vat.value, +(+costVat + +cost).toFixed(2), null])
-                setTotal(t => +t.toFixed(2) + +costVat.toFixed(2) + +cost.toFixed(2))
-                setError(false)
-            }
-      }
+        setError(true)
+        if (service.value !== '' && price.value !== '' && quantity.value !== '') {
+            let copyRaw = [...raw]
+            setRaw([...copyRaw, service.value, unit.value,
+                quantity.value, price.value, cost, vat.value, +(+costVat + +cost).toFixed(2), null])
+            setTotal(t => +t.toFixed(2) + +costVat.toFixed(2) + +cost.toFixed(2))
+            setError(false)
+        }
+    }
 
     const clearButton = useCallback(() => {
         unit.reset('')
@@ -50,7 +51,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
         quantity.reset('')
         service.reset('')
         setError(false)
-    },[unit.value,price.value,quantity.value,service.value])
+    }, [unit.value, price.value, quantity.value, service.value])
 
     const deleteRaw = () => {
         if (raw.length >= 8) {
@@ -68,7 +69,8 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
 
     let date = docDate.value.toString()
     let dateStr = `${date[8]}${date[9]}.${date[5]}${date[6]}.${date[0]}${date[1]}${date[2]}${date[3]}`
-
+    // @ts-ignore
+    let totalOfString = numOfString(endRaw[6]).toUpperCase()
     return (<div>
             <style type="text/css"
                    media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
@@ -84,13 +86,13 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                                 unp={unp.value}
             />
             <FormRequisitesAct docNumber={docNumber.value}
-                               changeDocNumber={useCallback((e)=>docNumber.onChange(e),[docNumber.value])}
-                               changeService={useCallback((e)=>service.onChange(e),[service.value])}
-                               changeUnit={useCallback((e)=>unit.onChange(e),[unit.value])}
-                               changeQuantity={useCallback((e)=>quantity.onChange(e),[quantity.value])}
-                               changePrice={useCallback((e)=>price.onChange(e),[price.value])}
-                               changeVat={useCallback((e)=>vat.onChange(e),[vat.value])}
-                               changeDocDate={useCallback((e)=>docDate.onChange(e),[docDate.value])}
+                               changeDocNumber={useCallback((e) => docNumber.onChange(e), [docNumber.value])}
+                               changeService={useCallback((e) => service.onChange(e), [service.value])}
+                               changeUnit={useCallback((e) => unit.onChange(e), [unit.value])}
+                               changeQuantity={useCallback((e) => quantity.onChange(e), [quantity.value])}
+                               changePrice={useCallback((e) => price.onChange(e), [price.value])}
+                               changeVat={useCallback((e) => vat.onChange(e), [vat.value])}
+                               changeDocDate={useCallback((e) => docDate.onChange(e), [docDate.value])}
                                clearButton={clearButton}
                                service={service.value}
                                docDate={docDate.value}
@@ -117,7 +119,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                     <div> р/с: {bankAccount.value}</div>
                     </span></div>
                 {arrDiv.map(t => t)}
-                <div className={css.cell}> Исполнитель: OOO "Kopyta"</div>
+                <div className={css.cell}> Исполнитель: OOO "РОГА И КОПЫТА"</div>
                 {arrDiv.map(t => t)}
                 <div className={css.table}> Наименование услуги (работы)</div>
                 <div className={css.table_2}> Ед. изм.</div>
@@ -139,9 +141,15 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                     )
                 })
                 }
-                <div className={css.cell_4}> Заказчик ________________</div>
+                <div className={css.cell_4}>
+                    <div className={css.total_of_string}>ИТОГО К ОПЛАТЕ: {totalOfString}</div>
+                    Заказчик ________________
+                </div>
                 <div></div>
-                <div className={css.cell_4}> Исполнитель_______________</div>
+                <div className={css.cell_6}>
+
+                    Исполнитель_______________
+                </div>
             </div>
 
 
