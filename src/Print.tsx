@@ -25,10 +25,14 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     const quantity = useInputNum('')
     // @ts-ignore
     const unp = useInputNum(localStorage.getItem('unp'))
-    const vat = useInputNum('20')
+    const vat = useInput('')
 
     let cost = +(+quantity.value * +price.value).toFixed(2)
-    let costVat = +(cost * +vat.value / 100).toFixed(2)
+
+    let costVat = vat.value === "Без НДС"
+        ? 0
+        : +(cost * +vat.value / 100).toFixed(2)
+
 
     useEffect(() => {
         setEndRaw(['', '', '', '', '', 'Итого:', total < 0 ? 0 : +total.toFixed(2), null])
@@ -50,6 +54,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
         price.reset('')
         quantity.reset('')
         service.reset('')
+        vat.reset('')
         setError(false)
     }, [unit.value, price.value, quantity.value, service.value])
 
@@ -64,7 +69,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
 
     let arrDiv = []
     for (let i = 0; i <= 6; i++) {
-        arrDiv[i] = <div key={i} className={css.cell}></div>
+        arrDiv[i] = <div key={i} className={css.cell}> </div>
     }
 
     let date = docDate.value.toString()

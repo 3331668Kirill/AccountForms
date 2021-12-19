@@ -20,10 +20,10 @@ interface TypePropsFormRequisitesAct {
 }
 
 export const FormRequisitesAct = React.memo(({
-                                      docNumber, changeDocNumber, service, vat, changeVat, docDate,
-                                      changeQuantity, quantity, changePrice, price,
-                                      changeService, unit, changeUnit, changeDocDate,clearButton,
-                                  }: TypePropsFormRequisitesAct) => {
+                                                 docNumber, changeDocNumber, service, vat, changeVat, docDate,
+                                                 changeQuantity, quantity, changePrice, price,
+                                                 changeService, unit, changeUnit, changeDocDate, clearButton,
+                                             }: TypePropsFormRequisitesAct) => {
 
     console.log("render Act")
     return (<div>
@@ -33,7 +33,7 @@ export const FormRequisitesAct = React.memo(({
                     <input type={"date"} id={'docDate'}
                            value={docDate}
                            onChange={changeDocDate}
-                           />
+                    />
                 </div>
                 <div>
                     <label>введите номер документа: </label>
@@ -63,10 +63,18 @@ export const FormRequisitesAct = React.memo(({
                 </div>
                 <div>
                     <label>введите НДС %: </label>
-                    <input type={"text"} id={'vat'} value={vat} onChange={changeVat}/>
+                    <input list={"vat-list"} id={'vat'} value={vat} onChange={changeVat}/>
                 </div>
+                <datalist id="vat-list">
+                    <option value="20"/>
+                    <option value="10"/>
+                    <option value="0"/>
+                    <option value="Без НДС"/>
 
-                <button onClick={clearButton}> Очистить поля ввода </button>
+                </datalist>
+
+
+                <button onClick={clearButton}> Очистить поля ввода</button>
 
             </div>
 
