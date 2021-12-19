@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/AccountForms/static/css/main.5bf3e608.chunk.css",
-    "main.js": "/AccountForms/static/js/main.ed2a8d7d.chunk.js",
-    "main.js.map": "/AccountForms/static/js/main.ed2a8d7d.chunk.js.map",
+    "main.js": "/AccountForms/static/js/main.dac52e87.chunk.js",
+    "main.js.map": "/AccountForms/static/js/main.dac52e87.chunk.js.map",
     "runtime-main.js": "/AccountForms/static/js/runtime-main.42ce4534.js",
     "runtime-main.js.map": "/AccountForms/static/js/runtime-main.42ce4534.js.map",
     "static/js/2.a0aaaca2.chunk.js": "/AccountForms/static/js/2.a0aaaca2.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.42ce4534.js",
     "static/js/2.a0aaaca2.chunk.js",
     "static/css/main.5bf3e608.chunk.css",
-    "static/js/main.ed2a8d7d.chunk.js"
+    "static/js/main.dac52e87.chunk.js"
   ]
 }
