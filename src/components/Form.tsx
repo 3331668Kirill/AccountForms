@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import { useReactToPrint } from 'react-to-print';
-import { ComponentToPrint } from './Print';
+import { ComponentToPrint } from '../Print';
 
-export const ActForm = () => {
+
+export const Form = () => {
     const componentRef = useRef(null);
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,

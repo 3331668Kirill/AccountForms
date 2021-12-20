@@ -1,4 +1,4 @@
-import css from "./print.module.css";
+import css from "../../print.module.css";
 import React, {ChangeEvent} from "react";
 
 interface TypePropsFormRequisitesAct {

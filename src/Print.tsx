@@ -1,9 +1,10 @@
 import React, {useCallback, useEffect, useState} from "react";
 import css from './print.module.css'
-import {FormRequisitesFirm} from "./FormRequisitesFirm";
+import {FormRequisitesFirm} from "./components/Forms/FormRequisitesFirm";
 import {useInput, useInputNum} from "./utils/useInput";
-import {FormRequisitesAct} from "./FormRequisitesAct";
+import {FormRequisitesAct} from "./components/Forms/FormRequisitesAct";
 import {numOfString} from "./utils/numOfStr";
+import {FormToPrintAct} from "./components/Forms/FormToPrintAct";
 
 export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     let initialRaw: Array<string | number | null> = []
@@ -67,7 +68,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
         }
     }
 
-    let arrDiv = []
+    let arrDiv: Array<any> = []
     for (let i = 0; i <= 6; i++) {
         arrDiv[i] = <div key={i} className={css.cell}></div>
     }
@@ -105,59 +106,29 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                                unit={unit.value}
 
             />
-            {<div>
+            <div>
                 <button onClick={addStrInTable}> Добавить в таблицу</button>
                 <button onClick={deleteRaw}> Удалить строку</button>
-            </div>}
+            </div>
             {error && <p style={{color: 'red'}}>"Поля выделенные красным обязательны для заполнения!!!"</p>}
             <style type="text/css"
                    media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
             '@page { size: A4; margin-left: 15mm !important }}'}</style>
-            <div ref={ref} className={css.grid}>
-                <div className={css.cell_1}>АКТ выполненных работ</div>
-                <div className={css.cell_3}>№{docNumber.value} от {docDate.value && dateStr}</div>
-                <div className={css.cell_5}>г.Минск</div>
-                <div
-                    className={css.customer}> Заказчик: <span>{nameFirm.value}
-                    <div>юр. адрес: {address.value}</div>
-                    <div>УНП: {unp.value}</div>
-                    <div> р/с: {bankAccount.value}</div>
-                    </span></div>
-                {arrDiv.map(t => t)}
-                <div className={css.cell}> Исполнитель: OOO "РОГА И КОПЫТА"</div>
-                {arrDiv.map(t => t)}
-                <div className={css.table}> Наименование услуги (работы)</div>
-                <div className={css.table_2}> Ед. изм.</div>
-                <div className={css.table_2}> Количество</div>
-                <div className={css.table_2}> Цена за ед, бел.руб</div>
-                <div className={css.table_2}> Стоимость без НДС, бел.руб</div>
-                <div className={css.table_2}> НДС, %</div>
-                <div className={css.table_2}> Стоимость с НДС, бел.руб</div>
-                <div className={css.table_5}></div>
-                {raw.map((t, index) => {
-                    return (
-                        <div key={index} className={t !== null ? css.table_4 : css.table_5}> {t} </div>
-                    )
-                })
-                }
-                {endRaw.map((t, index) => {
-                    return (
-                        <div key={index} className={t !== null ? css.table_4 : css.table_5}> {t} </div>
-                    )
-                })
-                }
-                <div className={css.cell_4}>
-                    <div className={css.total_of_string}>ИТОГО К ОПЛАТЕ: {totalOfString}</div>
-                    Заказчик ________________
-                </div>
-                <div></div>
-                <div className={css.cell_6}>
+            <div ref={ref}>
+                <FormToPrintAct docNumber={docNumber.value}
+                                docDate={docDate.value}
+                                dateStr={dateStr}
+                                raw={raw}
+                                endRaw={endRaw}
+                                arrDiv={arrDiv}
+                                totalOfString={totalOfString}
+                                address={address.value}
+                                bankAccount={bankAccount.value}
+                                nameFirm={nameFirm.value}
+                                unp={unp.value}
+                />
 
-                    Исполнитель_______________
-                </div>
             </div>
-
-
         </div>
     );
 });
