@@ -7,7 +7,10 @@
 
     /*/ 5 cols (each 100px in width) /*/
     grid-template-columns: [left] 300px  [center]60px  100px 100px  100px 100px 120px 100px [right];
-    grid-template-rows: [top] 100px 100px [center] 100px 130px 100px 50px 50px 50px 50px 50px[bottom]
+    grid-template-rows: [top] 100px 100px [center] 100px 130px 100px 50px 50px 50px 50px 50px[bottom];
+    justify-content: left;
+    /*align-content: center;*/
+
 }
 
 .cell_1 {
@@ -15,6 +18,7 @@
     margin: 20px;
     grid-column: left / center;
     grid-row: top / center;
+
 }
 
 .customer {

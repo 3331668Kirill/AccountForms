@@ -69,7 +69,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
 
     let arrDiv = []
     for (let i = 0; i <= 6; i++) {
-        arrDiv[i] = <div key={i} className={css.cell}> </div>
+        arrDiv[i] = <div key={i} className={css.cell}></div>
     }
 
     let date = docDate.value.toString()
@@ -77,9 +77,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
     // @ts-ignore
     let totalOfString = numOfString(endRaw[6]).toUpperCase()
     return (<div>
-            <style type="text/css"
-                   media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
-            '@page { size: A4; margin-left: 15mm !important }}'}</style>
+
 
             <FormRequisitesFirm bankAccount={bankAccount.value}
                                 changeBankAccount={useCallback((e) => bankAccount.onChange(e), [bankAccount.value])}
@@ -112,6 +110,9 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                 <button onClick={deleteRaw}> Удалить строку</button>
             </div>}
             {error && <p style={{color: 'red'}}>"Поля выделенные красным обязательны для заполнения!!!"</p>}
+            <style type="text/css"
+                   media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
+            '@page { size: A4; margin-left: 15mm !important }}'}</style>
             <div ref={ref} className={css.grid}>
                 <div className={css.cell_1}>АКТ выполненных работ</div>
                 <div className={css.cell_3}>№{docNumber.value} от {docDate.value && dateStr}</div>
@@ -120,7 +121,6 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                     className={css.customer}> Заказчик: <span>{nameFirm.value}
                     <div>юр. адрес: {address.value}</div>
                     <div>УНП: {unp.value}</div>
-
                     <div> р/с: {bankAccount.value}</div>
                     </span></div>
                 {arrDiv.map(t => t)}

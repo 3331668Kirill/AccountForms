@@ -1,4 +1,16 @@
-
+.App {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 100px 1fr;
+    grid-template-areas:
+  "h h"
+  "n c";
+}
+.App_content {
+    grid-area: c;
+    background-color: aquamarine;
+    /*margin-left: 200px;*/
+}
 
 
 /*.App-header {*/
@@ -24,3 +36,6 @@
 /*    transform: rotate(360deg);*/
 /*  }*/
 /*}*/
+.home{
+    text-align: center;
+}
