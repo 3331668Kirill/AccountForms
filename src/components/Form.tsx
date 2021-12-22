@@ -11,7 +11,8 @@ export const Form = () => {
 
     return (
         <div>
-            <ComponentToPrint ref={componentRef} />
+            <ComponentToPrint ref={componentRef} val={'act_form'}/>
+            {/*<ComponentToPrint ref={componentRef} val={''}/>*/}
             <button style={{width:'150px', height: '125px', backgroundColor:'yellow'}} onClick={handlePrint}>Распечатать или сохранить в файл</button>
         </div>
     );

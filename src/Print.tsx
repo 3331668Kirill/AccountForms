@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {MutableRefObject, useCallback, useEffect, useState} from "react";
 import css from './print.module.css'
 import {FormRequisitesFirm} from "./components/Forms/FormRequisitesFirm";
 import {useInput, useInputNum} from "./utils/useInput";
@@ -6,7 +6,13 @@ import {FormRequisitesAct} from "./components/Forms/FormRequisitesAct";
 import {numOfString} from "./utils/numOfStr";
 import {FormToPrintAct} from "./components/Forms/FormToPrintAct";
 
-export const ComponentToPrint = React.forwardRef((props, ref: any) => {
+type TypeComponentToPrintProps = {
+    ref: MutableRefObject<any>
+    val: string;
+}
+
+export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProps, ref:any) => {
+
     let initialRaw: Array<string | number | null> = []
     const [raw, setRaw] = useState<Array<string | number | null>>(initialRaw)
     const [endRaw, setEndRaw] = useState<Array<string | number | null>>([])
@@ -68,10 +74,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
         }
     }
 
-    let arrDiv: Array<any> = []
-    for (let i = 0; i <= 6; i++) {
-        arrDiv[i] = <div key={i} className={css.cell}></div>
-    }
+    let arrDiv: Array<any> = new Array(7).fill('1').map((t,i)=><div key={i} className={css.cell}> </div>)
 
     let date = docDate.value.toString()
     let dateStr = `${date[8]}${date[9]}.${date[5]}${date[6]}.${date[0]}${date[1]}${date[2]}${date[3]}`
@@ -115,7 +118,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                    media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
             '@page { size: A4; margin-left: 15mm !important }}'}</style>
             <div ref={ref}>
-                <FormToPrintAct docNumber={docNumber.value}
+                {props.val === 'act_form' && <FormToPrintAct docNumber={docNumber.value}
                                 docDate={docDate.value}
                                 dateStr={dateStr}
                                 raw={raw}
@@ -126,7 +129,7 @@ export const ComponentToPrint = React.forwardRef((props, ref: any) => {
                                 bankAccount={bankAccount.value}
                                 nameFirm={nameFirm.value}
                                 unp={unp.value}
-                />
+                />}
 
             </div>
         </div>

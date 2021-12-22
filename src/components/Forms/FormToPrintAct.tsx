@@ -2,7 +2,6 @@ import React from 'react';
 import css from "../../print.module.css";
 
 type TypeFormToPrintAct={
-
     docNumber: string | number
     docDate: string | number
     dateStr: string
@@ -16,10 +15,10 @@ type TypeFormToPrintAct={
     arrDiv: Array<any>
 }
 
-export const FormToPrintAct = ({ docNumber, docDate, raw, endRaw,
+export const FormToPrintAct = React.memo(({ docNumber, docDate, raw, endRaw,
                                    dateStr,nameFirm,address, arrDiv,
                                    unp,bankAccount, totalOfString}:TypeFormToPrintAct) => {
-
+    console.log("render FormToPrintAct")
     return (
         <div className={css.grid}>
 
@@ -42,7 +41,7 @@ export const FormToPrintAct = ({ docNumber, docDate, raw, endRaw,
                 <div className={css.table_2}> Стоимость без НДС, бел.руб</div>
                 <div className={css.table_2}> НДС, %</div>
                 <div className={css.table_2}> Стоимость с НДС, бел.руб</div>
-                <div className={css.table_5}></div>
+                <div className={css.table_5}> </div>
                 {raw.map((t, index) => {
                     return (
                         <div key={index} className={t !== null ? css.table_4 : css.table_5}> {t} </div>
@@ -59,13 +58,13 @@ export const FormToPrintAct = ({ docNumber, docDate, raw, endRaw,
                     <div className={css.total_of_string}>ИТОГО К ОПЛАТЕ: {totalOfString}</div>
                     Заказчик ________________
                 </div>
-                <div></div>
+                <div> </div>
                 <div className={css.cell_6}>
 
                     Исполнитель_______________
                 </div>
             </div>
 
-    );
-};
+    )
+})
 
