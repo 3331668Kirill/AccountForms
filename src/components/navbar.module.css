@@ -1,6 +1,6 @@
 .nav {
-    width: 150px;
-
+    width: 250px;
+    margin-top: 50px;
     background-color: yellow;
 }
 .nav_div{
@@ -8,7 +8,10 @@
 }
 
 .item {
+    height: 50px;
+    border: black solid 1px;
     color: black;
+    text-align: center;
 }
 .item a.active {
     color: red;
