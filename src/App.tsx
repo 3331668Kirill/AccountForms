@@ -12,7 +12,8 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route path="home" element={<Home />} />
-                <Route path="act_form" element={<Form />}/>
+                <Route path="act_form" element={<Form form={'act_form'} />}/>
+                <Route path="invoice_form" element={<Form form={'invoice_form'} />}/>
             </Routes>
 
 

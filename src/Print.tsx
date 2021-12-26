@@ -25,13 +25,22 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
     // @ts-ignore
     const nameFirm = useInput(localStorage.getItem('nameFirm'))
     // @ts-ignore
+    const nameFirmOwn = useInput(localStorage.getItem('nameFirmOwn'))
+    // @ts-ignore
     const address = useInput(localStorage.getItem('address'))
     // @ts-ignore
+    const addressOwn = useInput(localStorage.getItem('addressOwn'))
+    // @ts-ignore
     const bankAccount = useInput(localStorage.getItem('bankAccount'))
+    // @ts-ignore
+    const bankAccountOwn = useInput(localStorage.getItem('bankAccountOwn'))
     const price = useInputNum('')
     const quantity = useInputNum('')
     // @ts-ignore
     const unp = useInputNum(localStorage.getItem('unp'))
+    // @ts-ignore
+    const unpOwn = useInputNum(localStorage.getItem('unpOwn'))
+
     const vat = useInput('')
 
     let cost = +(+quantity.value * +price.value).toFixed(2)
@@ -91,6 +100,22 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
                                 changeUnp={useCallback((e) => unp.onChange(e), [unp.value])}
                                 changeNameFirm={useCallback((e) => nameFirm.onChange(e), [nameFirm.value])}
                                 unp={unp.value}
+                                val={'customer'}
+            />
+
+            <FormRequisitesFirm bankAccount={bankAccountOwn.value}
+                                changeBankAccount={useCallback((e) =>
+                                    bankAccountOwn.onChange(e), [bankAccountOwn.value])}
+                                nameFirm={nameFirmOwn.value}
+                                address={addressOwn.value}
+                                changeAddress={useCallback((e) =>
+                                    addressOwn.onChange(e), [addressOwn.value])}
+                                changeUnp={useCallback((e) =>
+                                    unpOwn.onChange(e), [unpOwn.value])}
+                                changeNameFirm={useCallback((e) =>
+                                    nameFirmOwn.onChange(e), [nameFirmOwn.value])}
+                                unp={unpOwn.value}
+                                val={'executor'}
             />
             <FormRequisitesAct docNumber={docNumber.value}
                                changeDocNumber={useCallback((e) => docNumber.onChange(e), [docNumber.value])}
@@ -118,19 +143,16 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
                    media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
             '@page { size: A4; margin-left: 15mm !important }}'}</style>
             <div ref={ref}>
-                {props.val === 'act_form' && <FormToPrintAct docNumber={docNumber.value}
-                                docDate={docDate.value}
-                                dateStr={dateStr}
-                                raw={raw}
-                                endRaw={endRaw}
-                                arrDiv={arrDiv}
-                                totalOfString={totalOfString}
-                                address={address.value}
-                                bankAccount={bankAccount.value}
-                                nameFirm={nameFirm.value}
-                                unp={unp.value}
-                />}
-
+                <FormToPrintAct
+                                nameOfForm={props.val} docNumber={docNumber.value}
+                                docDate={docDate.value} dateStr={dateStr}
+                                raw={raw} vat={vat.value} endRaw={endRaw}
+                                arrDiv={arrDiv} totalOfString={totalOfString}
+                                address={address.value} addressOwn={addressOwn.value}
+                                bankAccount={bankAccount.value} bankAccountOwn={bankAccountOwn.value}
+                                nameFirm={nameFirm.value} nameFirmOwn={nameFirmOwn.value}
+                                unp={unp.value} unpOwn={unpOwn.value}
+                />
             </div>
         </div>
     );

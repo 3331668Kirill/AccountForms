@@ -11,7 +11,10 @@
     height: 50px;
     border: black solid 1px;
     color: black;
+    font-weight: bold;
+    font-size: large;
     text-align: center;
+    padding-top: 20px;
 }
 .item a.active {
     color: red;

@@ -19,7 +19,7 @@ const Navbar = () => {
                     <NavLink to='/tn' >ТН</NavLink>
                 </div>
                 <div className={s.item}>
-                    <NavLink to='/bill' >Счет-фактура</NavLink>
+                    <NavLink to='/invoice_form' >Счет-фактура</NavLink>
                 </div>
                 <div className={s.item}>
                     <NavLink to='/contract' >Договор</NavLink>

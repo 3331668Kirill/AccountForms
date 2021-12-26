@@ -18,6 +18,7 @@
     margin: 20px;
     grid-column: left / center;
     grid-row: top / center;
+    text-align: right;
 
 }
 
@@ -48,9 +49,13 @@
 }
 .cell_6 {
     height: 100px;
-    margin-top: 50px;
+    margin-top: 90px;
 }
-
+.cell_7 {
+    height: 100px;
+    margin-top: 50px;
+    font-weight: normal;
+}
 .total_of_string{
     margin-bottom: 30px;
     width: 100vmax;
