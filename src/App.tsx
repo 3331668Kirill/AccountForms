@@ -14,6 +14,7 @@ function App() {
                 <Route path="home" element={<Home />} />
                 <Route path="act_form" element={<Form form={'act_form'} />}/>
                 <Route path="invoice_form" element={<Form form={'invoice_form'} />}/>
+                <Route path="ttn_form" element={<Form form={'ttn_form'} />}/>
             </Routes>
 
 

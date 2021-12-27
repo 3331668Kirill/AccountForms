@@ -1,0 +1,53 @@
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    max-width: 70%;
+    width: 70%;
+    border: 2px solid black;
+    text-align: left;
+}
+th {
+    font-weight: normal;
+    color: #039;
+    border: 2px solid black;
+    /*padding: 10px 8px;*/
+}
+td {
+    color: black;
+    /*padding: 9px 8px;*/
+    transition: .3s linear;
+    border: 2px solid black;
+}
+.up{
+    text-align: center;
+}
+
+tr:hover td {
+    color: black;
+}
+
+.unp_string{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+.unp_1{
+    border: black 2px solid;
+    padding: 10px;
+}
+.unp_2{
+    border: black 2px solid;
+    padding-right: 100px;
+}
+
+.date{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+    margin-bottom: 80px;
+}
+.auto{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}

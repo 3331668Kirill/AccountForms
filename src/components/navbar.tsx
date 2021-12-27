@@ -13,7 +13,7 @@ const Navbar = () => {
                     <NavLink to='/act_form' >Акт выполненных работ</NavLink>
                 </div>
                 <div className={`${s.item} ${s.active}`}>
-                    <NavLink to='/ttn' >ТТН</NavLink>
+                    <NavLink to='/ttn_form' >ТТН</NavLink>
                 </div>
                 <div className={`${s.item} ${s.active}`}>
                     <NavLink to='/tn' >ТН</NavLink>

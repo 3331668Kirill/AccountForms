@@ -5,6 +5,7 @@ import {useInput, useInputNum} from "./utils/useInput";
 import {FormRequisitesAct} from "./components/Forms/FormRequisitesAct";
 import {numOfString} from "./utils/numOfStr";
 import {FormToPrintAct} from "./components/Forms/FormToPrintAct";
+import {FormToPrintTTN} from "./components/Forms/FormToPrintTTN";
 
 type TypeComponentToPrintProps = {
     ref: MutableRefObject<any>
@@ -15,6 +16,7 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
 
     let initialRaw: Array<string | number | null> = []
     const [raw, setRaw] = useState<Array<string | number | null>>(initialRaw)
+    const [rawTTN, setRawTTN] = useState<Array<string | number | null >>(initialRaw)
     const [endRaw, setEndRaw] = useState<Array<string | number | null>>([])
     const [total, setTotal] = useState<number>(0)
     const [error, setError] = useState<boolean>(false)
@@ -60,6 +62,9 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
             let copyRaw = [...raw]
             setRaw([...copyRaw, service.value, unit.value,
                 quantity.value, price.value, cost, vat.value, +(+costVat + +cost).toFixed(2), null])
+
+            setRawTTN([...rawTTN, service.value, unit.value, quantity.value,
+                price.value, cost, vat.value, costVat , +(+costVat + +cost).toFixed(2), null,null,null])
             setTotal(t => +t.toFixed(2) + +costVat.toFixed(2) + +cost.toFixed(2))
             setError(false)
         }
@@ -77,6 +82,7 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
     const deleteRaw = () => {
         if (raw.length >= 8) {
             setRaw([...raw].filter((t, i) => i < raw.length - 8))
+            setRawTTN([...rawTTN].filter((t, i) => i < rawTTN.length - 11))
             let array = raw.filter((t, i) => i >= raw.length - 8)
             // @ts-ignore
             setTotal(t => +t.toFixed(2) - array[6])
@@ -143,7 +149,7 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
                    media="print">{'@media print { body { -webkit-print-color-adjust: exact; } ' +
             '@page { size: A4; margin-left: 15mm !important }}'}</style>
             <div ref={ref}>
-                <FormToPrintAct
+                {props.val !== 'ttn_form' && <FormToPrintAct
                                 nameOfForm={props.val} docNumber={docNumber.value}
                                 docDate={docDate.value} dateStr={dateStr}
                                 raw={raw} vat={vat.value} endRaw={endRaw}
@@ -152,7 +158,17 @@ export const ComponentToPrint = React.forwardRef((props:TypeComponentToPrintProp
                                 bankAccount={bankAccount.value} bankAccountOwn={bankAccountOwn.value}
                                 nameFirm={nameFirm.value} nameFirmOwn={nameFirmOwn.value}
                                 unp={unp.value} unpOwn={unpOwn.value}
-                />
+                />}
+                {props.val === 'ttn_form' && <FormToPrintTTN
+                    rawTTN={rawTTN}
+                    docDate={docDate.value} dateStr={dateStr}
+                    raw={raw} vat={vat.value} endRaw={endRaw}
+                    arrDiv={arrDiv} totalOfString={totalOfString}
+                    address={address.value} addressOwn={addressOwn.value}
+                    bankAccount={bankAccount.value} bankAccountOwn={bankAccountOwn.value}
+                    nameFirm={nameFirm.value} nameFirmOwn={nameFirmOwn.value}
+                    unp={unp.value} unpOwn={unpOwn.value}
+                />}
             </div>
         </div>
     );
