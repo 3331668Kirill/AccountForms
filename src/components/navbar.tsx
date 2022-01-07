@@ -16,7 +16,7 @@ const Navbar = () => {
                     <NavLink to='/ttn_form' >ТТН</NavLink>
                 </div>
                 <div className={`${s.item} ${s.active}`}>
-                    <NavLink to='/tn' >ТН</NavLink>
+                    <NavLink to='/tn_form' >ТН</NavLink>
                 </div>
                 <div className={s.item}>
                     <NavLink to='/invoice_form' >Счет-фактура</NavLink>

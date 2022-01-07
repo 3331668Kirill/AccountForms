@@ -1,5 +1,7 @@
 import React, {ChangeEvent, useState} from "react";
-import {Modal} from "../../Modal";
+import {Modal} from "../../utils/Modal";
+import css from "./requisitesActs.module.css"
+import inp from "./../print.module.css"
 
 interface TypePropsFormRequisitesFirm {
     unp: string | number
@@ -29,34 +31,39 @@ export const FormRequisitesFirm = React.memo(({
     console.log("render Form")
     return (<div>
         {val === 'customer' &&
-        <button style={{margin: "10px 20px", padding: "20px", fontSize: "1rem", backgroundColor: 'lightgreen'}}
+        <button className={css.button}
                 onClick={() => setModalActive(true)}
         > РЕКВИЗИТЫ ЗАКАЗЧИКА
         </button>}
         {val === 'executor' && <div>
-            <button style={{margin: "10px 20px", padding: "20px", fontSize: "1rem", backgroundColor: 'lightgreen'}}
+            <button className={css.button}
                     onClick={() => setModalActive(true)}
             > РЕКВИЗИТЫ ИСПОЛНИТЕЛЯ
             </button>
         </div>}
         <Modal active={modalActive} setActive={setModalActive}>
-            <label>введите УНП: </label>
-            <input type={"text"} id={val === 'customer' ? 'unp' : 'unpOwn'} value={unp} onChange={changeUnp}
-                   maxLength={9}/>
-            <div>
+            <div className={inp.input_field}>
+                <label >введите УНП: </label>
+                <input type={"text"} id={val === 'customer' ? 'unp' : 'unpOwn'} value={unp} onChange={changeUnp}
+                        className={inp.input} maxLength={9}/>
+            </div>
+            <div className={inp.input_field}>
                 <label>введите наименование организации: </label>
-                <input type={"text"} id={val === 'customer' ?'nameFirm': 'nameFirmOwn'} value={nameFirm} onChange={changeNameFirm} maxLength={30}/>
+                <input type={"text"} id={val === 'customer' ? 'nameFirm' : 'nameFirmOwn'} value={nameFirm}
+                       className={inp.input} onChange={changeNameFirm} maxLength={30}/>
             </div>
-            <div>
+            <div className={inp.input_field}>
                 <label>введите адрес организации: </label>
-                <input type={"text"} id={val === 'customer' ?'address':'addressOwn'} style={{width: '250px'}}
-                       value={address} onChange={changeAddress} maxLength={40}/>
+                <input type={"text"} id={val === 'customer' ? 'address' : 'addressOwn'} style={{width: '250px'}}
+                       className={inp.input} value={address} onChange={changeAddress} maxLength={40}/>
             </div>
-            <div>
+            <div className={inp.input_field}>
                 <label>введите расчетный счет организации: </label>
-                <input type={"text"} id={val === 'customer' ? 'bankAccount' : 'bankAccountOwn'} style={{width: '250px'}}
+                <input type={"text"} id={val === 'customer' ? 'bankAccount' : 'bankAccountOwn'}
+                       className={inp.input} style={{width: '250px'}}
                        value={bankAccount} onChange={changeBankAccount} maxLength={28}/>
             </div>
+
         </Modal>
     </div>)
 })

@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import {useReactToPrint} from 'react-to-print';
-import {ComponentToPrint} from '../Print';
+import {ComponentToPrint} from './Print';
 import css from './form.module.css'
 
 type TypeFormProps = {
@@ -15,7 +15,7 @@ export const Form = ({form}: TypeFormProps) => {
 
     return (
         <div className={css.form}>
-            <button style={{margin: "20px 20px", width: '150px', height: '70px', backgroundColor: 'yellow'}}
+            <button className={css.button}
                     onClick={handlePrint}>Распечатать или сохранить в файл
             </button>
             <div>

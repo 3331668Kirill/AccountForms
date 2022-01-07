@@ -1,5 +1,5 @@
 import React from 'react';
-import css from "../../print.module.css";
+import css from "../print.module.css";
 
 type TypeFormToPrintAct = {
     nameOfForm: string
@@ -15,7 +15,7 @@ type TypeFormToPrintAct = {
     addressOwn: string
     unp: string | number
     unpOwn: string | number
-    totalOfString: string
+    totalOfString: string | null | 0
     raw: Array<string | number | null>
     endRaw: Array<string | number | null>
     arrDiv: Array<any>

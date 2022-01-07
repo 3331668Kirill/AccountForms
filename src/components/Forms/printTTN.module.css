@@ -10,11 +10,10 @@ th {
     font-weight: normal;
     color: #039;
     border: 2px solid black;
-    /*padding: 10px 8px;*/
+
 }
 td {
     color: black;
-    /*padding: 9px 8px;*/
     transition: .3s linear;
     border: 2px solid black;
 }

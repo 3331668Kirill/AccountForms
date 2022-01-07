@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import homeimage from './home.jpeg'
 
 
 
@@ -9,6 +8,7 @@ function Home () {
         <div className="home">
 
             ГЛАВНАЯ
+            <img src={homeimage}/>
 
         </div>
 
