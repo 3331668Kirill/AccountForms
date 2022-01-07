@@ -2,6 +2,7 @@
     width: 250px;
     margin-top: 50px;
     background-color: yellow;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 .nav_div{
 
@@ -15,7 +16,16 @@
     font-size: large;
     text-align: center;
     padding-top: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }
-.item a.active {
-    color: red;
+.item:hover{
+    height: 50px;
+    background-color: #e1e106;
+    border: black solid 2px;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    text-align: center;
+    padding-top: 20px;
+    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
 }

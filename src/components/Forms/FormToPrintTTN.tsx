@@ -66,15 +66,15 @@ export const FormToPrintTTN = React.memo(({
             </div>
             <div className={css.auto}>
                 <span>Заказчик автомобильной перевозки</span>
-                <span>_______________________________________________________________________________________</span>
+                <span>__________________________________________________________________________________</span>
             </div>
             <div className={css.auto}>
                 <span>Грузоотправитель</span>
-                <span>_{nameFirmOwn}________________________________</span>
+                <span>_{nameFirmOwn}___</span>
             </div>
             <div className={css.auto}>
                 <span>Грузополучатель</span>
-                <span>__{nameFirm}___________________________________</span>
+                <span>__{nameFirm}____</span>
             </div>
             <div className={css.auto}>
                 <span>Основание отпуска</span>

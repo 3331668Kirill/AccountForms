@@ -5,7 +5,7 @@ import homeimage from './home.jpeg'
 
 function Home () {
     return (
-        <div className="home">
+        <div className="home" style={{backgroundColor: 'white'}}>
 
             ГЛАВНАЯ
             <img src={homeimage}/>

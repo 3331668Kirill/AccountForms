@@ -12,10 +12,10 @@ const Navbar = () => {
                 <div className={s.item}>
                     <NavLink to='/act_form' >Акт выполненных работ</NavLink>
                 </div>
-                <div className={`${s.item} ${s.active}`}>
+                <div className={s.item}>
                     <NavLink to='/ttn_form' >ТТН</NavLink>
                 </div>
-                <div className={`${s.item} ${s.active}`}>
+                <div className={s.item}>
                     <NavLink to='/tn_form' >ТН</NavLink>
                 </div>
                 <div className={s.item}>
@@ -25,7 +25,7 @@ const Navbar = () => {
                     <NavLink to='/contract' >Договор</NavLink>
                 </div>
             </nav>
-        </div>
+         </div>
     )
 }
 

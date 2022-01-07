@@ -47,6 +47,6 @@ tr:hover td {
 }
 .auto{
     display: flex;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
     margin-bottom: 10px;
 }

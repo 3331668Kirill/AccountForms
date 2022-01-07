@@ -6,9 +6,8 @@
 }
 
 .button{
-    /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     border-radius: 4px;
-    background-color: lightgreen;
     height: 80px;
     width: 250px;
     font-weight: bold;
@@ -23,7 +22,10 @@
 }
 
 .button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    /*box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
     border-radius: 8px;
-    background-color: yellow;
+    background-image: -webkit-linear-gradient(top, #efefef, #ef4e14);
+    background-image: -moz-linear-gradient(top, #efefef, #ef4e14);
+    background-image: -o-linear-gradient(top, #efefef, #ef4e14);
+    background-image: linear-gradient(to bottom, #efefef, #f64302);
 }
