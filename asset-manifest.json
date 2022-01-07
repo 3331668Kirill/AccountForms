@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/AccountForms/static/css/main.c078c298.chunk.css",
-    "main.js": "/AccountForms/static/js/main.6dd683e0.chunk.js",
-    "main.js.map": "/AccountForms/static/js/main.6dd683e0.chunk.js.map",
+    "main.css": "/AccountForms/static/css/main.e60dc01f.chunk.css",
+    "main.js": "/AccountForms/static/js/main.af3fdf79.chunk.js",
+    "main.js.map": "/AccountForms/static/js/main.af3fdf79.chunk.js.map",
     "runtime-main.js": "/AccountForms/static/js/runtime-main.24275c8c.js",
     "runtime-main.js.map": "/AccountForms/static/js/runtime-main.24275c8c.js.map",
-    "static/js/2.ce685183.chunk.js": "/AccountForms/static/js/2.ce685183.chunk.js",
-    "static/js/2.ce685183.chunk.js.map": "/AccountForms/static/js/2.ce685183.chunk.js.map",
+    "static/js/2.0244b2c3.chunk.js": "/AccountForms/static/js/2.0244b2c3.chunk.js",
+    "static/js/2.0244b2c3.chunk.js.map": "/AccountForms/static/js/2.0244b2c3.chunk.js.map",
     "static/js/3.826f18a6.chunk.js": "/AccountForms/static/js/3.826f18a6.chunk.js",
     "static/js/3.826f18a6.chunk.js.map": "/AccountForms/static/js/3.826f18a6.chunk.js.map",
     "index.html": "/AccountForms/index.html",
-    "static/css/main.c078c298.chunk.css.map": "/AccountForms/static/css/main.c078c298.chunk.css.map",
-    "static/js/2.ce685183.chunk.js.LICENSE.txt": "/AccountForms/static/js/2.ce685183.chunk.js.LICENSE.txt",
+    "static/css/main.e60dc01f.chunk.css.map": "/AccountForms/static/css/main.e60dc01f.chunk.css.map",
+    "static/js/2.0244b2c3.chunk.js.LICENSE.txt": "/AccountForms/static/js/2.0244b2c3.chunk.js.LICENSE.txt",
     "static/media/home.90338249.jpeg": "/AccountForms/static/media/home.90338249.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.24275c8c.js",
-    "static/js/2.ce685183.chunk.js",
-    "static/css/main.c078c298.chunk.css",
-    "static/js/main.6dd683e0.chunk.js"
+    "static/js/2.0244b2c3.chunk.js",
+    "static/css/main.e60dc01f.chunk.css",
+    "static/js/main.af3fdf79.chunk.js"
   ]
 }
